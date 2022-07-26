@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/si/static/css/main.89065acc.css",
-    "main.js": "/si/static/js/main.2b176e4a.js",
-    "static/js/787.a6ac6162.chunk.js": "/si/static/js/787.a6ac6162.chunk.js",
-    "static/media/spirit_island.png": "/si/static/media/spirit_island.b1de274a6d59baf4713f.png",
-    "index.html": "/si/index.html",
-    "main.89065acc.css.map": "/si/static/css/main.89065acc.css.map",
-    "main.2b176e4a.js.map": "/si/static/js/main.2b176e4a.js.map",
-    "787.a6ac6162.chunk.js.map": "/si/static/js/787.a6ac6162.chunk.js.map"
+    "main.css": "/spirit-island-random-start/static/css/main.89065acc.css",
+    "main.js": "/spirit-island-random-start/static/js/main.65fc070a.js",
+    "static/js/787.a6ac6162.chunk.js": "/spirit-island-random-start/static/js/787.a6ac6162.chunk.js",
+    "static/media/spirit_island.png": "/spirit-island-random-start/static/media/spirit_island.b1de274a6d59baf4713f.png",
+    "index.html": "/spirit-island-random-start/index.html",
+    "main.89065acc.css.map": "/spirit-island-random-start/static/css/main.89065acc.css.map",
+    "main.65fc070a.js.map": "/spirit-island-random-start/static/js/main.65fc070a.js.map",
+    "787.a6ac6162.chunk.js.map": "/spirit-island-random-start/static/js/787.a6ac6162.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.89065acc.css",
-    "static/js/main.2b176e4a.js"
+    "static/js/main.65fc070a.js"
   ]
 }
