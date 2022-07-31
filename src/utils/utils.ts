@@ -1,7 +1,4 @@
-export const MAX_PLAYERS = 4;
-export const STAGE_ONE_INVADER_CARD_COUNT = 4;
-export const STAGE_TWO_INVADER_CARD_COUNT = 5;
-export const STAGE_THREE_INVADER_CARD_COUNT = 6;
+import { MAX_PLAYERS, STAGE_ONE_INVADER_CARD_COUNT, STAGE_THREE_INVADER_CARD_COUNT, STAGE_TWO_INVADER_CARD_COUNT } from "../constants";
 
 export interface IInvaderCard {
     stage: string;
