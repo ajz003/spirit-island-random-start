@@ -78,8 +78,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .selection-square.selected {
   border: 2px solid blue;
+}
+
+.archipelagos-count-square {
+  width: 48px;
+}
+
+.archipelago-settings-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.archipelago-setting-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid brown;
+  margin: 0 12px;
+  padding: 12px;
 }

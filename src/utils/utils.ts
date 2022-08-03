@@ -9,7 +9,7 @@ const ALL_ISLAND_BOARDS = ['A', 'B', 'C', 'D', 'E', 'F'] as const;
 type IslandBoardsTuple = typeof ALL_ISLAND_BOARDS;
 type IslandBoard = IslandBoardsTuple[number];
 
-interface IArchipelago {
+export interface IArchipelago {
     count: number;
     boards: IslandBoard[];
 }

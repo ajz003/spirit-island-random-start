@@ -5,11 +5,12 @@ type SelectionSquareProps = {
     id: string,
     selection: string,
     onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
-    label: string,
+    children: React.ReactNode,
+    classNames?: string,
 }
 
-export default function SelectionSquare({ id, selection, onClick, label }: SelectionSquareProps) {
-    const selectionSquareClasses = classnames('selection-square', {
+export default function SelectionSquare({ id, selection, onClick, children, classNames }: SelectionSquareProps) {
+    const selectionSquareClasses = classnames('selection-square', classNames, {
         'selected': id === selection,
     })
     return (
@@ -18,7 +19,7 @@ export default function SelectionSquare({ id, selection, onClick, label }: Selec
             onClick={(e) => onClick(e)}
             data-value={id}
         >
-            {label}
+            {children}
         </div>
     );
 }
