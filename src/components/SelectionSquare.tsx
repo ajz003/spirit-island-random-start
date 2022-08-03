@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 
 type SelectionSquareProps = {
-    id: number,
-    selection: number,
+    id: string,
+    selection: string,
     onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
     label: string,
 }

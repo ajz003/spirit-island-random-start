@@ -2,9 +2,9 @@ import React from 'react';
 import logo from './spirit_island.png';
 // import { Counter } from './features/counter/Counter';
 import './App.css';
-import { IInvaderCard, pickInvaderCardsToDiscard, pickRandomIslandBoards } from './utils/utils';
+import { getArchipelagos, IInvaderCard, pickInvaderCardsToDiscard, pickRandomIslandBoards } from './utils/utils';
 import PlayerCountSquare from './components/PlayerCountSquare';
-import { MAP_SETUP_TYPES, MAX_PLAYERS } from './constants';
+import { ARCHIPELAGOS, MAP_SETUP_TYPES, MAX_PLAYERS, PANGAEA } from './constants';
 import SelectionSquare from './components/SelectionSquare';
 
 function App() {
@@ -12,13 +12,22 @@ function App() {
   const [islandBoards, setIslandBoards] = React.useState<string[]>([]);
   const [invaderCardsToDiscard, setInvaderCardsToDiscard] = React.useState<IInvaderCard[]>([]);
   const [playerCount, setPlayerCount] = React.useState<number>(2);
-  const [mapType, setMapType] = React.useState<number>(1);
+  const [mapType, setMapType] = React.useState<string>(PANGAEA);
 
-  const getRandom = () => {
+  const getSetup = () => {
     if (playerCount === MAX_PLAYERS) {
 
     }
-    setIslandBoards(pickRandomIslandBoards(playerCount));
+    switch (mapType) {
+      case PANGAEA:
+        setIslandBoards(pickRandomIslandBoards(playerCount));
+        break;
+      case ARCHIPELAGOS:
+        getArchipelagos([2, 2, 1]);
+        break;
+      default:
+        break;
+    }
     setInvaderCardsToDiscard(pickInvaderCardsToDiscard());
   }
 
@@ -36,7 +45,7 @@ function App() {
     const value = (e.target as HTMLDivElement).getAttribute('data-value');
 
     if (value) {
-      const selectedValue = parseInt(value);
+      const selectedValue = value;
       setMapType(selectedValue);
     }
   }
@@ -65,7 +74,7 @@ function App() {
                 <SelectionSquare
                   key={'selection-square-' + (i + 1)}
                   selection={mapType}
-                  id={i + 1}
+                  id={type}
                   onClick={handleMapTypeSquareClick}
                   label={type}
                 />
@@ -75,7 +84,7 @@ function App() {
         </div>
         <h2>Map Setup:</h2>
         <button
-          onClick={getRandom}
+          onClick={getSetup}
           className='get-setup'
         >
           Get Setup
