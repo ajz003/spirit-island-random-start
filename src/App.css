@@ -94,10 +94,21 @@
   flex-direction: column;
 }
 
+@media (min-width: 768px) {
+  .archipelago-settings-wrapper {
+    flex-direction: row;
+  }
+}
+
 .archipelago-setting-wrapper {
   display: flex;
   flex-direction: column;
   border: 2px solid brown;
   margin: 0 12px;
   padding: 12px;
+}
+
+.archipelago-error-message {
+  color: red;
+  font-weight: bold;
 }

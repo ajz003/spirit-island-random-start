@@ -49,7 +49,7 @@ function App() {
       return {
         valid: false,
         message:
-          "The number of boards in the archipelagos is not equal to the number of players.",
+          "The total number of boards in the archipelagos is not equal to the number of players.",
       };
     }
 
@@ -210,16 +210,18 @@ function App() {
           Get Setup
         </button>
         {mapType === ARCHIPELAGOS && archipelagoErrorMessage && (
-          <p>{archipelagoErrorMessage}</p>
+          <p className="archipelago-error-message">{archipelagoErrorMessage}</p>
         )}
-        <div>
-          <h2>
-            Island Boards:{" "}
-            {islandBoards.map((board, i) => {
-              return board + (i + 1 === islandBoards.length ? "" : ", ");
-            })}
-          </h2>
-        </div>
+        {mapType === PANGAEA && (
+          <div>
+            <h2>
+              Island Boards:{" "}
+              {islandBoards.map((board, i) => {
+                return board + (i + 1 === islandBoards.length ? "" : ", ");
+              })}
+            </h2>
+          </div>
+        )}
         {mapType === ARCHIPELAGOS && (
           <div>
             {archipelagos.map((archipelago, i) => {
