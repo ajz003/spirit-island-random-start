@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './spirit_island.png';
 // import { Counter } from './features/counter/Counter';
 import './App.css';
-import { getArchipelagos, IArchipelago, IInvaderCard, pickInvaderCardsToDiscard, pickRandomIslandBoards } from './utils/utils';
+import { getArchipelagos, IArchipelago, IInvaderCard, getInvaderCardsToDiscard, pickRandomIslandBoards } from './utils/utils';
 import PlayerCountSquare from './components/PlayerCountSquare';
 import { ARCHIPELAGOS, MAP_SETUP_TYPES, MAX_PLAYERS, PANGAEA } from './constants';
 import SelectionSquare from './components/SelectionSquare';
@@ -29,9 +29,6 @@ function App() {
   }
 
   const getSetup = () => {
-    if (playerCount === MAX_PLAYERS) {
-
-    }
     switch (mapType) {
       case PANGAEA:
         setIslandBoards(pickRandomIslandBoards(playerCount));
@@ -39,7 +36,6 @@ function App() {
       case ARCHIPELAGOS:
         if (areValidArchipelagos(archipelagosCounts)) {
           setArchipelagoErrorMessage('');
-
           setArchipelagos(getArchipelagos(archipelagosCounts));
         } else {
           setArchipelagoErrorMessage('Error: please check your archipelago settings and try again.');
@@ -48,7 +44,7 @@ function App() {
       default:
         break;
     }
-    setInvaderCardsToDiscard(pickInvaderCardsToDiscard());
+    setInvaderCardsToDiscard(getInvaderCardsToDiscard());
   }
 
 

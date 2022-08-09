@@ -90,7 +90,7 @@ export function getArchipelagos(counts: number[]): IArchipelago[] {
     return archipelagos;
 }
 
-export function pickInvaderCardsToDiscard(): IInvaderCard[] {
+export function getInvaderCardsToDiscard(): IInvaderCard[] {
     let cardsToRemove: IInvaderCard[] = [
         {
             stage: 'I',
