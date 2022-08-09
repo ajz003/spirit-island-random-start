@@ -33,17 +33,27 @@ function App() {
   const [archipelagoErrorMessage, setArchipelagoErrorMessage] =
     React.useState<string>("");
 
-  function areValidArchipelagos(archipelagosCounts: number[]) {
+  function areValidArchipelagos(archipelagosCounts: number[]): {
+    valid: boolean;
+    message?: string;
+  } {
     if (archipelagosCounts.length !== numArchipelagos) {
-      return false;
+      return {
+        valid: false,
+        message: "Please select the number of boards for each archipelago.",
+      };
     } else if (
       archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0) !==
       playerCount
     ) {
-      return false;
+      return {
+        valid: false,
+        message:
+          "The number of boards in the archipelagos is not equal to the number of players.",
+      };
     }
 
-    return true;
+    return { valid: true };
   }
 
   const getSetup = () => {
@@ -52,13 +62,12 @@ function App() {
         setIslandBoards(pickRandomIslandBoards(playerCount));
         break;
       case ARCHIPELAGOS:
-        if (areValidArchipelagos(archipelagosCounts)) {
+        const { valid, message } = areValidArchipelagos(archipelagosCounts);
+        if (valid) {
           setArchipelagoErrorMessage("");
           setArchipelagos(getArchipelagos(archipelagosCounts));
-        } else {
-          setArchipelagoErrorMessage(
-            "Error: please check your archipelago settings and try again."
-          );
+        } else if (message) {
+          setArchipelagoErrorMessage(message);
         }
         break;
       default:
