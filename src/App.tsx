@@ -30,10 +30,8 @@ function App() {
   const [archipelagosCounts, setArchipelagosCounts] = React.useState<number[]>(
     []
   );
-  const [
-    archipelagoErrorMessage,
-    setArchipelagoErrorMessage,
-  ] = React.useState<string>("");
+  const [archipelagoErrorMessage, setArchipelagoErrorMessage] =
+    React.useState<string>("");
 
   function areValidArchipelagos(archipelagosCounts: number[]) {
     if (archipelagosCounts.length !== numArchipelagos) {
