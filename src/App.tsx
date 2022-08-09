@@ -12,7 +12,7 @@ function App() {
   const [islandBoards, setIslandBoards] = React.useState<string[]>([]);
   const [invaderCardsToDiscard, setInvaderCardsToDiscard] = React.useState<IInvaderCard[]>([]);
   const [playerCount, setPlayerCount] = React.useState<number>(2);
-  const [mapType, setMapType] = React.useState<string>(ARCHIPELAGOS);
+  const [mapType, setMapType] = React.useState<string>(PANGAEA);
   const [archipelagos, setArchipelagos] = React.useState<IArchipelago[]>([])
   const [numArchipelagos, setNumArchipelagos] = React.useState<number>(2);
   const [archipelagosCounts, setArchipelagosCounts] = React.useState<number[]>([]);

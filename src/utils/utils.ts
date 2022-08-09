@@ -1,4 +1,4 @@
-import { STAGE_ONE_INVADER_CARD_COUNT, STAGE_THREE_INVADER_CARD_COUNT, STAGE_TWO_INVADER_CARD_COUNT } from "../constants";
+import { MAX_PLAYERS_TO_AVOID_BOARD_PAIRINGS, STAGE_ONE_INVADER_CARD_COUNT, STAGE_THREE_INVADER_CARD_COUNT, STAGE_TWO_INVADER_CARD_COUNT } from "../constants";
 
 export interface IInvaderCard {
     stage: string;
@@ -47,9 +47,21 @@ export function pickRandomIslandBoards(playerCount: number): IslandBoard[] {
 
     shuffle(boards);
 
+    if (playerCount <= MAX_PLAYERS_TO_AVOID_BOARD_PAIRINGS) {
+        while (hasIncompatibleBoardsTogether(boards.slice(0, playerCount))) {
+            shuffle(boards);
+        }       
+    }
+
     return boards.slice(0, playerCount);
 }
 
+// This expansion includes two additional Island Boards, to add variety and allow games with up to 6 players.
+// Underneath the board letter on the new boards is a smaller crossed-out letter: board E shows “no B” and board F shows “no D”.
+// You may wish to avoid using that pairing of boards in games with 4 or fewer Island Boards:
+// it will concentrate some terrains as good (those starting without / / ) and others as bad,
+// which can skew Difficulty depending on Invader Cards drawn. If you consider island variety more important than the potential for swinginess,
+// ignore this advisory and use whatever boards you like! (See p. 16 for the standard layouts for 5 and 6 players.)
 function hasIncompatibleBoardsTogether(boards: IslandBoard[]) {
     if ((boards.includes('E') && boards.includes('B')) || (boards.includes('D') && boards.includes('F'))) {
         return true;
@@ -68,9 +80,7 @@ export function getArchipelagos(counts: number[]): IArchipelago[] {
                 boards: boards.splice(0, counts[i]),
             }
             if (hasIncompatibleBoardsTogether(archipelago.boards)) {
-                console.log('INCOMPATIBLE!', archipelago.boards)
                 archipelagos.length = 0;
-                console.log(archipelagos.length);
                 break;
             }
             archipelagos.push(archipelago);

@@ -8,3 +8,4 @@ export const MAP_SETUP_TYPES = [
     PANGAEA,
     ARCHIPELAGOS,
 ];
+export const MAX_PLAYERS_TO_AVOID_BOARD_PAIRINGS = 4;
