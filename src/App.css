@@ -68,6 +68,10 @@
   height: 48px;
 }
 
+.map-type-selection {
+  text-transform: capitalize;
+}
+
 .selection-square-wrapper {
   display: flex;
   justify-content: space-evenly;
@@ -92,7 +96,7 @@
 }
 
 .archipelagos-count-square {
-  width: calc(100% / 6);
+  width: calc(100% / 5);
   max-width: 64px;
   padding: 0 16px;
 }

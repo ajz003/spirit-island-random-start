@@ -5,21 +5,39 @@ import SelectionSquare from "./SelectionSquare";
 type ArchipelagoSettingsProps = {
   numArchipelagos: number;
   archipelagosCounts: number[];
-  handleArchipelagosBoardCountSquareClick: (
-    e: React.MouseEvent<HTMLDivElement>,
-    index: number,
-    boardsOnThisArchipelago: number
-  ) => void;
+  setArchipelagosCounts: React.Dispatch<React.SetStateAction<number[]>>;
+  setArchipelagoErrorMessage: React.Dispatch<React.SetStateAction<string>>;
 };
 
 function ArchipelagoSettings({
   numArchipelagos,
   archipelagosCounts,
-  handleArchipelagosBoardCountSquareClick,
+  setArchipelagosCounts,
+  setArchipelagoErrorMessage,
 }: ArchipelagoSettingsProps) {
+  const handleArchipelagosBoardCountSquareClick = (
+    e: React.MouseEvent<HTMLDivElement>,
+    index: number,
+    boardsOnThisArchipelago: number
+  ) => {
+    let newArchipelagoCounts = [...archipelagosCounts];
+    newArchipelagoCounts[index] = boardsOnThisArchipelago;
+    if (
+      newArchipelagoCounts.reduce((partialSum, a) => partialSum + a, 0) <=
+      MAX_PLAYERS
+    ) {
+      setArchipelagoErrorMessage("");
+      setArchipelagosCounts(newArchipelagoCounts);
+    } else {
+      setArchipelagoErrorMessage(
+        `You cannot have more boards than the maximum allowed players (${MAX_PLAYERS}).`
+      );
+    }
+  };
+
   return (
     <div>
-      <h2>Archipelago Settings:</h2>
+      <h2>Islet Settings:</h2>
       <div className="archipelago-settings-wrapper">
         {[...Array(numArchipelagos)].map((_, i) => {
           return (

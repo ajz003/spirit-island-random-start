@@ -107,16 +107,6 @@ function App() {
     }
   };
 
-  const handleArchipelagosBoardCountSquareClick = (
-    e: React.MouseEvent<HTMLDivElement>,
-    index: number,
-    boardsOnThisArchipelago: number
-  ) => {
-    let newArchipelagoCounts = [...archipelagosCounts];
-    newArchipelagoCounts[index] = boardsOnThisArchipelago;
-    setArchipelagosCounts(newArchipelagoCounts);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -127,6 +117,7 @@ function App() {
             {MAP_SETUP_TYPES.map((type, i) => {
               return (
                 <SelectionSquare
+                  classNames="map-type-selection"
                   key={"selection-square-" + (i + 1)}
                   selection={mapType}
                   id={type}
@@ -137,6 +128,9 @@ function App() {
               );
             })}
           </div>
+          <p className="map-type-description">
+            {mapType === PANGAEA ? "One massive landmass" : "Multiple islets"}
+          </p>
         </div>
         {mapType === PANGAEA && (
           <>
@@ -155,18 +149,18 @@ function App() {
         )}
         {mapType === ARCHIPELAGOS && (
           <>
-            <h2>Archipelago Count:</h2>
+            <h2>Islet Count:</h2>
             <div className="selection-square-wrapper">
-              {[...Array(MAX_PLAYERS)].map((_, i) => {
+              {[...Array(MAX_PLAYERS - 1)].map((_, i) => {
                 return (
                   <SelectionSquare
                     classNames="archipelagos-count-square"
-                    key={"archipelagos-count-square-" + (i + 1)}
+                    key={"archipelagos-count-square-" + (i + 2)}
                     selection={numArchipelagos.toString()}
                     id={(i + 1).toString()}
                     onClick={handleArchipelagosCountSquareClick}
                   >
-                    {(i + 1).toString()}
+                    {(i + 2).toString()}
                   </SelectionSquare>
                 );
               })}
@@ -177,9 +171,8 @@ function App() {
           <ArchipelagoSettings
             numArchipelagos={numArchipelagos}
             archipelagosCounts={archipelagosCounts}
-            handleArchipelagosBoardCountSquareClick={
-              handleArchipelagosBoardCountSquareClick
-            }
+            setArchipelagosCounts={setArchipelagosCounts}
+            setArchipelagoErrorMessage={setArchipelagoErrorMessage}
           />
         )}
         <h2>Map Setup:</h2>
