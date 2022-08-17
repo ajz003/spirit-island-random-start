@@ -1,0 +1,9 @@
+.map-type-description {
+  width: 100%;
+}
+
+.map-type-description-image {
+  max-width: 100%;
+  height: 300px;
+  object-fit: scale-down;
+}

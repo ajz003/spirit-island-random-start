@@ -1,3 +1,12 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 .App {
   text-align: center;
 }
@@ -43,7 +52,9 @@
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 16px;
+  justify-content: center;
   width: 100%;
+  align-items: center;
 }
 
 .player-count-square {
@@ -74,7 +85,7 @@
 
 .selection-square-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-bottom: 16px;
   width: 100%;
 }

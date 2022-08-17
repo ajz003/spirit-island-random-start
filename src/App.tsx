@@ -18,6 +18,7 @@ import {
 } from "./constants";
 import SelectionSquare from "./components/SelectionSquare";
 import ArchipelagoSettings from "./components/ArchipelagoSettings";
+import MapTypeDescription from "./components/MapTypeDescription";
 
 function App() {
   const [islandBoards, setIslandBoards] = React.useState<string[]>([]);
@@ -41,7 +42,7 @@ function App() {
     if (archipelagosCounts.length !== numArchipelagos) {
       return {
         valid: false,
-        message: "Please select the number of boards for each archipelago.",
+        message: "Please select the number of boards for EVERY islet.",
       };
     } else if (
       archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0) >
@@ -49,7 +50,7 @@ function App() {
     ) {
       return {
         valid: false,
-        message: `The total number of boards across archipelagos currently selected is greater than the maximum allowed number of players (${MAX_PLAYERS}).`,
+        message: `The total number of boards across islets currently selected is greater than the maximum allowed number of players (${MAX_PLAYERS}).`,
       };
     }
 
@@ -128,9 +129,7 @@ function App() {
               );
             })}
           </div>
-          <p className="map-type-description">
-            {mapType === PANGAEA ? "One massive landmass" : "Multiple islets"}
-          </p>
+          <MapTypeDescription mapType={mapType} />
         </div>
         {mapType === PANGAEA && (
           <>
@@ -157,7 +156,7 @@ function App() {
                     classNames="archipelagos-count-square"
                     key={"archipelagos-count-square-" + (i + 2)}
                     selection={numArchipelagos.toString()}
-                    id={(i + 1).toString()}
+                    id={(i + 2).toString()}
                     onClick={handleArchipelagosCountSquareClick}
                   >
                     {(i + 2).toString()}
