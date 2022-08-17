@@ -48,7 +48,7 @@ function ArchipelagoSettings({
               <h3>Islet #{i + 1}</h3>
               <h4>Number of Boards (Players)</h4>
               <div className="selection-square-wrapper">
-                {[...Array(MAX_PLAYERS - 1)].map((_, j) => {
+                {[...Array(MAX_PLAYERS - numArchipelagos + 1)].map((_, j) => {
                   return (
                     <SelectionSquare
                       classNames="archipelagos-count-square"

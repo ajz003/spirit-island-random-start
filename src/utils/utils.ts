@@ -71,8 +71,9 @@ export function pickRandomIslandBoards(playerCount: number): IslandBoard[] {
 // ignore this advisory and use whatever boards you like! (See p. 16 for the standard layouts for 5 and 6 players.)
 function hasIncompatibleBoardsTogether(boards: IslandBoard[]) {
   if (
-    (boards.includes("E") && boards.includes("B")) ||
-    (boards.includes("D") && boards.includes("F"))
+    boards.length <= MAX_PLAYERS_TO_AVOID_BOARD_PAIRINGS &&
+    ((boards.includes("E") && boards.includes("B")) ||
+      (boards.includes("D") && boards.includes("F")))
   ) {
     return true;
   }

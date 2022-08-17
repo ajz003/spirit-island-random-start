@@ -101,7 +101,7 @@ function App() {
     e: React.MouseEvent<HTMLDivElement>
   ) => {
     const value = (e.target as HTMLDivElement).getAttribute("data-value");
-
+    setArchipelagosCounts([]);
     if (value) {
       const selectedValue = value;
       setNumArchipelagos(parseInt(selectedValue));
