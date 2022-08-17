@@ -44,13 +44,12 @@ function App() {
         message: "Please select the number of boards for each archipelago.",
       };
     } else if (
-      archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0) !==
-      playerCount
+      archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0) >
+      MAX_PLAYERS
     ) {
       return {
         valid: false,
-        message:
-          "The total number of boards in the archipelagos is not equal to the number of players.",
+        message: `The total number of boards across archipelagos currently selected is greater than the maximum allowed number of players (${MAX_PLAYERS}).`,
       };
     }
 
@@ -122,31 +121,38 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Player Count:</h2>
-        <div className="player-count-square-wrapper">
-          {[...Array(MAX_PLAYERS)].map((_, i) => (
-            <PlayerCountSquare
-              key={"player-count-square-" + (i + 1)}
-              selectedPlayerCountSquare={playerCount}
-              num={i + 1}
-              onClick={handlePlayerCountSquareClick}
-            />
-          ))}
+        <div>
+          <h2>Map Type:</h2>
+          <div className="selection-square-wrapper">
+            {MAP_SETUP_TYPES.map((type, i) => {
+              return (
+                <SelectionSquare
+                  key={"selection-square-" + (i + 1)}
+                  selection={mapType}
+                  id={type}
+                  onClick={handleMapTypeSquareClick}
+                >
+                  {type}
+                </SelectionSquare>
+              );
+            })}
+          </div>
         </div>
-        <div className="selection-square-wrapper">
-          {MAP_SETUP_TYPES.map((type, i) => {
-            return (
-              <SelectionSquare
-                key={"selection-square-" + (i + 1)}
-                selection={mapType}
-                id={type}
-                onClick={handleMapTypeSquareClick}
-              >
-                {type}
-              </SelectionSquare>
-            );
-          })}
-        </div>
+        {mapType === PANGAEA && (
+          <>
+            <h2>Player Count:</h2>
+            <div className="player-count-square-wrapper">
+              {[...Array(MAX_PLAYERS)].map((_, i) => (
+                <PlayerCountSquare
+                  key={"player-count-square-" + (i + 1)}
+                  selectedPlayerCountSquare={playerCount}
+                  num={i + 1}
+                  onClick={handlePlayerCountSquareClick}
+                />
+              ))}
+            </div>
+          </>
+        )}
         {mapType === ARCHIPELAGOS && (
           <>
             <h2>Archipelago Count:</h2>

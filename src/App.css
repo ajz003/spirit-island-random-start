@@ -43,17 +43,20 @@
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .player-count-square {
   font-size: 24px;
   font-weight: bold;
-  width: 64px;
+  width: calc(100% / 6);
+  max-width: 64px;
   height: 64px;
   border: 2px solid darkslategrey;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .player-count-square.selected {
@@ -69,6 +72,7 @@
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .selection-square {
@@ -79,6 +83,8 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 16px;
+  height: 64px;
 }
 
 .selection-square.selected {
@@ -86,7 +92,9 @@
 }
 
 .archipelagos-count-square {
-  width: 48px;
+  width: calc(100% / 6);
+  max-width: 64px;
+  padding: 0 16px;
 }
 
 .archipelago-settings-wrapper {
@@ -94,7 +102,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .archipelago-settings-wrapper {
     flex-direction: row;
   }

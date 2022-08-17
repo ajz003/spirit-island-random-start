@@ -27,8 +27,8 @@ function ArchipelagoSettings({
               key={`archipelagos-settings-${i}`}
               className="archipelago-setting-wrapper"
             >
-              <h3>Archipelago #{i + 1}</h3>
-              <h4>Number of Boards</h4>
+              <h3>Islet #{i + 1}</h3>
+              <h4>Number of Boards (Players)</h4>
               <div className="selection-square-wrapper">
                 {[...Array(MAX_PLAYERS)].map((_, j) => {
                   return (
