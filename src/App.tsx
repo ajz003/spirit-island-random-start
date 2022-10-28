@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./spirit_island.png";
 // import { Counter } from './features/counter/Counter';
-import "./App.css";
+import "./App.scss";
 import {
   getArchipelagos,
   IArchipelago,
@@ -214,7 +214,7 @@ function App() {
         )}
         {randomSpirits && <div>
           <h2>Spirits:</h2>
-          <ul>
+          <ol>
             {randomSpirits.map(({ name }) => {
               return (
                 <li>
@@ -224,11 +224,11 @@ function App() {
                 </li>
               );
             })}
-          </ul>
+          </ol>
         </div>}
         <div>
           <h2>Invader Cards:</h2>
-          <ul>
+          <ul className="no-bullets">
             {invaderCardsToDiscard.map(({ stage, order }) => {
               return (
                 <li>
