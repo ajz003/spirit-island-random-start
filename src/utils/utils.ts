@@ -1,5 +1,7 @@
 import {
   MAX_PLAYERS_TO_AVOID_BOARD_PAIRINGS,
+  Spirit,
+  SPIRITS,
   STAGE_ONE_INVADER_CARD_COUNT,
   STAGE_THREE_INVADER_CARD_COUNT,
   STAGE_TWO_INVADER_CARD_COUNT,
@@ -118,6 +120,13 @@ export function getInvaderCardsToDiscard(): IInvaderCard[] {
   ];
 
   return cardsToRemove;
+}
+
+export function getRandomSpirits(count: number): Spirit[] {
+  const spiritsCopy = [...SPIRITS]
+  shuffle(spiritsCopy);
+
+  return spiritsCopy.splice(0, count);
 }
 
 function getRandomIntInclusive(min: number, max: number) {
