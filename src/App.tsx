@@ -8,6 +8,7 @@ import {
   IInvaderCard,
   getInvaderCardsToDiscard,
   pickRandomIslandBoards,
+  getRandomSpirits,
 } from "./utils/utils";
 import PlayerCountSquare from "./components/PlayerCountSquare";
 import {
@@ -15,6 +16,7 @@ import {
   MAP_SETUP_TYPES,
   MAX_PLAYERS,
   PANGAEA,
+  Spirit,
 } from "./constants";
 import SelectionSquare from "./components/SelectionSquare";
 import ArchipelagoSettings from "./components/ArchipelagoSettings";
@@ -25,6 +27,7 @@ function App() {
   const [invaderCardsToDiscard, setInvaderCardsToDiscard] = React.useState<
     IInvaderCard[]
   >([]);
+  const [randomSpirits, setRandomSpirits] = React.useState<Spirit[]>();
   const [playerCount, setPlayerCount] = React.useState<number>(2);
   const [mapType, setMapType] = React.useState<string>(PANGAEA);
   const [archipelagos, setArchipelagos] = React.useState<IArchipelago[]>([]);
@@ -75,6 +78,7 @@ function App() {
         break;
     }
     setInvaderCardsToDiscard(getInvaderCardsToDiscard());
+    setRandomSpirits(getRandomSpirits(playerCount));
   };
 
   const handlePlayerCountSquareClick = (
@@ -208,6 +212,20 @@ function App() {
             })}
           </div>
         )}
+        {randomSpirits && <div>
+          <h2>Spirits:</h2>
+          <ul>
+            {randomSpirits.map(({ name }) => {
+              return (
+                <li>
+                  <span>
+                    {name}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>}
         <div>
           <h2>Invader Cards:</h2>
           <ul>
