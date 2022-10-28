@@ -27,7 +27,7 @@ function App() {
   const [invaderCardsToDiscard, setInvaderCardsToDiscard] = React.useState<
     IInvaderCard[]
   >([]);
-  const [randomSpirits, setRandomSpirits] = React.useState<Spirit[]>();
+  const [randomSpirits, setRandomSpirits] = React.useState<Spirit[]>([]);
   const [playerCount, setPlayerCount] = React.useState<number>(2);
   const [mapType, setMapType] = React.useState<string>(PANGAEA);
   const [archipelagos, setArchipelagos] = React.useState<IArchipelago[]>([]);
@@ -78,7 +78,9 @@ function App() {
         break;
     }
     setInvaderCardsToDiscard(getInvaderCardsToDiscard());
-    setRandomSpirits(getRandomSpirits(playerCount));
+    setRandomSpirits(getRandomSpirits(
+      mapType === PANGAEA ? playerCount : archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0)
+    ));
   };
 
   const handlePlayerCountSquareClick = (
@@ -185,7 +187,7 @@ function App() {
         {mapType === ARCHIPELAGOS && archipelagoErrorMessage && (
           <p className="archipelago-error-message">{archipelagoErrorMessage}</p>
         )}
-        {mapType === PANGAEA && (
+        {mapType === PANGAEA && islandBoards.length > 0 && (
           <div>
             <h2>
               Island Boards:{" "}
@@ -195,7 +197,7 @@ function App() {
             </h2>
           </div>
         )}
-        {mapType === ARCHIPELAGOS && (
+        {mapType === ARCHIPELAGOS && archipelagos.length > 0 && (
           <div>
             {archipelagos.map((archipelago, i) => {
               return (
@@ -212,7 +214,7 @@ function App() {
             })}
           </div>
         )}
-        {randomSpirits && <div>
+        {randomSpirits.length > 0 && <div>
           <h2>Spirits:</h2>
           <ol>
             {randomSpirits.map(({ name }) => {
@@ -226,7 +228,7 @@ function App() {
             })}
           </ol>
         </div>}
-        <div>
+        {invaderCardsToDiscard.length > 0 && <div>
           <h2>Invader Cards:</h2>
           <ul className="no-bullets">
             {invaderCardsToDiscard.map(({ stage, order }) => {
@@ -239,7 +241,7 @@ function App() {
               );
             })}
           </ul>
-        </div>
+        </div>}
       </header>
     </div>
   );
