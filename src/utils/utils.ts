@@ -123,7 +123,7 @@ export function getInvaderCardsToDiscard(): IInvaderCard[] {
 }
 
 export function getRandomSpirits(count: number): Spirit[] {
-  const spiritsCopy = [...SPIRITS]
+  const spiritsCopy = [...SPIRITS];
   shuffle(spiritsCopy);
 
   return spiritsCopy.splice(0, count);

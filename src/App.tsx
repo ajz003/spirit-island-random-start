@@ -78,9 +78,13 @@ function App() {
         break;
     }
     setInvaderCardsToDiscard(getInvaderCardsToDiscard());
-    setRandomSpirits(getRandomSpirits(
-      mapType === PANGAEA ? playerCount : archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0)
-    ));
+    setRandomSpirits(
+      getRandomSpirits(
+        mapType === PANGAEA
+          ? playerCount
+          : archipelagosCounts.reduce((partialSum, a) => partialSum + a, 0)
+      )
+    );
   };
 
   const handlePlayerCountSquareClick = (
@@ -214,34 +218,36 @@ function App() {
             })}
           </div>
         )}
-        {randomSpirits.length > 0 && <div>
-          <h2>Spirits:</h2>
-          <ol>
-            {randomSpirits.map(({ name }) => {
-              return (
-                <li>
-                  <span>
-                    {name}
-                  </span>
-                </li>
-              );
-            })}
-          </ol>
-        </div>}
-        {invaderCardsToDiscard.length > 0 && <div>
-          <h2>Invader Cards:</h2>
-          <ul className="no-bullets">
-            {invaderCardsToDiscard.map(({ stage, order }) => {
-              return (
-                <li>
-                  <span>
-                    Stage {stage}: {order}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>}
+        {randomSpirits.length > 0 && (
+          <div>
+            <h2>Spirits:</h2>
+            <ol>
+              {randomSpirits.map(({ name }) => {
+                return (
+                  <li>
+                    <span>{name}</span>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        )}
+        {invaderCardsToDiscard.length > 0 && (
+          <div>
+            <h2>Invader Cards:</h2>
+            <ul className="no-bullets">
+              {invaderCardsToDiscard.map(({ stage, order }) => {
+                return (
+                  <li>
+                    <span>
+                      Stage {stage}: {order}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </header>
     </div>
   );

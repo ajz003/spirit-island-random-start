@@ -8,9 +8,9 @@ export const MAP_SETUP_TYPES = [PANGAEA, ARCHIPELAGOS];
 export const MAX_PLAYERS_TO_AVOID_BOARD_PAIRINGS = 4;
 
 export interface Spirit {
-    name: string;
-    set: "Base Game";
-    complexity: "Low" | "Moderate" | "High" | "Very High";
+  name: string;
+  set: "Base Game";
+  complexity: "Low" | "Moderate" | "High" | "Very High";
 }
 
 const LIGHTNINGS_SWIFT_STRIKE: Spirit = {
@@ -59,12 +59,12 @@ const BRINGER_OF_DREAMS_AND_NIGHTMARES: Spirit = {
 };
 
 export const SPIRITS: Spirit[] = [
-    LIGHTNINGS_SWIFT_STRIKE,
-    RIVER_SURGERS_IN_SUNLIGHT,
-    VITAL_STRENGTH_OF_THE_EARTH,
-    SHADOWS_FLICKER_LIKE_FLAME,
-    THUNDERSPEAKER,
-    A_SPREAD_OF_RAMPANT_GREEN,
-    OCEANS_HUNGRY_GRASP,
-    BRINGER_OF_DREAMS_AND_NIGHTMARES,
-]
+  LIGHTNINGS_SWIFT_STRIKE,
+  RIVER_SURGERS_IN_SUNLIGHT,
+  VITAL_STRENGTH_OF_THE_EARTH,
+  SHADOWS_FLICKER_LIKE_FLAME,
+  THUNDERSPEAKER,
+  A_SPREAD_OF_RAMPANT_GREEN,
+  OCEANS_HUNGRY_GRASP,
+  BRINGER_OF_DREAMS_AND_NIGHTMARES,
+];
